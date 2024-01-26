@@ -45,14 +45,6 @@
 local lush = require('lush')
 local hsl = lush.hsl
 
-local pink = hsl("#FF7AB2")
-local commentGrey = hsl("#6C7986")
-local stringOrange = hsl("#FC6A5D")
-local numberYellow = hsl("#D0BF69")
-local preprocessorOrange = hsl("#FFA14F")
-local entityNameBlue = hsl("#ACF2E4")
-local functionDefBlue = hsl("#41A1C0")
-
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
 ---@diagnostic disable: undefined-global
@@ -75,8 +67,8 @@ local theme = lush(function(injected_functions)
     -- CurSearch      { }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     -- lCursor        { }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM       { }, -- Like Cursor, but used when in IME mode |CursorIM|
+    -- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     -- CursorLine     { }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-    -- CursorColumn   { CursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     -- Directory      { }, -- Directory names (and other special names in listings)
     -- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
     -- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
@@ -148,36 +140,36 @@ local theme = lush(function(injected_functions)
     --
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    Comment        { fg = commentGrey }, -- Any comment
+    -- Comment        { }, -- Any comment
 
-    Constant       { fg = numberYellow}, -- (*) Any constant
-    String         { fg = stringOrange }, --   A string constant: "this is a string"
-    Character      { String }, --   A character constant: 'c', '\n'
-    -- Number         {  }, --   A number constant: 234, 0xff
+    -- Constant       { }, -- (*) Any constant
+    -- String         { }, --   A string constant: "this is a string"
+    -- Character      { }, --   A character constant: 'c', '\n'
+    -- Number         { }, --   A number constant: 234, 0xff
+    -- Boolean        { }, --   A boolean constant: TRUE, false
     -- Float          { }, --   A floating point constant: 2.3e10
 
-    Identifier     { fg = functionDefBlue }, -- (*) Any variable name
-    -- Function       {  }, --   Function name (also: methods for classes)
+    -- Identifier     { }, -- (*) Any variable name
+    -- Function       { }, --   Function name (also: methods for classes)
 
-    Statement      { fg = pink, gui = "bold" }, -- (*) Any statement
+    -- Statement      { }, -- (*) Any statement
     -- Conditional    { }, --   if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --   case, default, etc.
     -- Operator       { }, --   "sizeof", "+", "*", etc.
     -- Keyword        { }, --   any other keyword
     -- Exception      { }, --   try, catch, throw
-    Boolean        { Statement }, --   A boolean constant: TRUE, false
 
-    PreProc        { fg = preprocessorOrange }, -- (*) Generic Preprocessor
+    -- PreProc        { }, -- (*) Generic Preprocessor
     -- Include        { }, --   Preprocessor #include
     -- Define         { }, --   Preprocessor #define
     -- Macro          { }, --   Same as Define
     -- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = entityNameBlue }, -- (*) int, long, char, etc.
-    StorageClass   { Statement }, --   static, register, volatile, etc.
-    Structure      { Statement }, --   struct, union, enum, etc.
-    Typedef        {  }, --   A typedef
+    -- Type           { }, -- (*) int, long, char, etc.
+    -- StorageClass   { }, --   static, register, volatile, etc.
+    -- Structure      { }, --   struct, union, enum, etc.
+    -- Typedef        { }, --   A typedef
 
     -- Special        { }, -- (*) Any special symbol
     -- SpecialChar    { }, --   Special character in a constant
