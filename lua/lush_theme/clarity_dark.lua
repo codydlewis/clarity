@@ -21,6 +21,7 @@ local comment = hsl("#6C7986")
 local normal = hsl("#F2F2F7")
 local windowBackground = hsl("#1F1F24")
 local cursorLineBackground = hsl("#1D1D1F")
+local stringFG = hsl("#FD8170")
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
@@ -119,15 +120,15 @@ local theme = lush(function(injected_functions)
 
     Comment        { fg = comment }, -- Any comment
 
-    Constant       { fg = red }, -- (*) Any constant
+    Constant       { fg = stringFG }, -- (*) Any constant
     -- String         { }, --   A string constant: "this is a string"
     -- Character      { }, --   A character constant: 'c', '\n'
     Number         { fg = yellow }, --   A number constant: 234, 0xff
     Boolean        { fg = pink, gui = "bold" }, --   A boolean constant: TRUE, false
     -- Float          { }, --   A floating point constant: 2.3e10
 
-    Identifier     { fg = sky }, -- (*) Any variable name
-    Function       { fg = hsl("#4FAFCC") }, --   Function name (also: methods for classes)
+    Identifier     { fg = hsl("#4FAFCC") }, -- (*) Any variable name
+    Function       { fg = sky }, --   Function name (also: methods for classes)
 
     Statement      { fg = pink, gui = "bold" }, -- (*) Any statement
     -- Conditional    { }, --   if, then, else, endif, switch, etc.
