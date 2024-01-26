@@ -126,7 +126,7 @@ local theme = lush(function(injected_functions)
     Boolean        { fg = pink, gui = "bold" }, --   A boolean constant: TRUE, false
     -- Float          { }, --   A floating point constant: 2.3e10
 
-    Identifier     { fg = blue }, -- (*) Any variable name
+    Identifier     { fg = sky }, -- (*) Any variable name
     -- Function       { }, --   Function name (also: methods for classes)
 
     Statement      { fg = pink, gui = "bold" }, -- (*) Any statement
@@ -143,7 +143,7 @@ local theme = lush(function(injected_functions)
     -- Macro          { }, --   Same as Define
     -- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = sky }, -- (*) int, long, char, etc.
+    Type           { fg = amethyst }, -- (*) int, long, char, etc.
     StorageClass   { fg = pink, gui = "bold" }, --   static, register, volatile, etc.
     Structure      { fg = pink, gui = "bold" }, --   struct, union, enum, etc.
     -- Typedef        { }, --   A typedef
