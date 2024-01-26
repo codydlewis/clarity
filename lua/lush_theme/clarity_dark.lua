@@ -1,49 +1,26 @@
 --
--- Built with,
+-- Clarity Neovim Colourscheme
+-- built with lush.nvim
 --
---        ,gggg,
---       d8" "8I                         ,dPYb,
---       88  ,dP                         IP'`Yb
---    8888888P"                          I8  8I
---       88                              I8  8'
---       88        gg      gg    ,g,     I8 dPgg,
---  ,aa,_88        I8      8I   ,8'8,    I8dP" "8I
--- dP" "88P        I8,    ,8I  ,8'  Yb   I8P    I8
--- Yb,_,d88b,,_   ,d8b,  ,d8b,,8'_   8) ,d8     I8,
---  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
---
-
--- This is a starter colorscheme for use with Lush,
--- for usage guides, see :h lush or :LushRunTutorial
-
---
--- Note: Because this is a lua file, vim will append it to the runtime,
---       which means you can require(...) it in other lua code (this is useful),
---       but you should also take care not to conflict with other libraries.
---
---       (This is a lua quirk, as it has somewhat poor support for namespacing.)
---
---       Basically, name your file,
---
---       "super_theme/lua/lush_theme/super_theme_dark.lua",
---
---       not,
---
---       "super_theme/lua/dark.lua".
---
---       With that caveat out of the way...
---
-
--- Enable lush.ify on this file, run:
---
---  `:Lushify`
---
---  or
---
---  `:lua require('lush').ify()`
 
 local lush = require('lush')
 local hsl = lush.hsl
+
+local red = hsl("#FF4E37")
+local orange = hsl("#FFA11A")
+local yellow = hsl("#FFD81F")
+local green = hsl("#5DE061")
+local sky = hsl("#42D6FF")
+local blue = hsl("#3590FF")
+local purple = hsl("#906DFA")
+local amethyst = hsl("#D576FF")
+local pink = hsl("#FF579E")
+local brown = hsl("#AA8B64")
+
+local comment = hsl("#6C7986")
+local normal = hsl("#F2F2F7")
+local windowBackground = hsl("#1F1F24")
+local cursorLineBackground = hsl("#1D1D1F")
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
@@ -67,8 +44,8 @@ local theme = lush(function(injected_functions)
     -- CurSearch      { }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     -- lCursor        { }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM       { }, -- Like Cursor, but used when in IME mode |CursorIM|
-    -- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    -- CursorLine     { }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorLine     { bg = cursorLineBackground }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorColumn   { CursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     -- Directory      { }, -- Directory names (and other special names in listings)
     -- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
     -- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
@@ -84,10 +61,10 @@ local theme = lush(function(injected_functions)
     -- SignColumn     { }, -- Column where |signs| are displayed
     -- IncSearch      { }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     -- Substitute     { }, -- |:substitute| replacement text highlighting
-    -- LineNr         { }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    LineNr         { fg = comment }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     -- LineNrAbove    { }, -- Line number for when the 'relativenumber' option is set, above the cursor line
     -- LineNrBelow    { }, -- Line number for when the 'relativenumber' option is set, below the cursor line
-    -- CursorLineNr   { }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    CursorLineNr   { fg = normal, gui = "bold" }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     -- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
     -- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
     -- MatchParen     { }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
@@ -96,8 +73,8 @@ local theme = lush(function(injected_functions)
     -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     -- MoreMsg        { }, -- |more-prompt|
     -- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    -- Normal         { }, -- Normal text
-    -- NormalFloat    { }, -- Normal text in floating windows.
+    Normal         { fg = normal }, -- Normal text
+    NormalFloat    { bg = windowBackground }, -- Normal text in floating windows.
     -- FloatBorder    { }, -- Border of floating windows.
     -- FloatTitle     { }, -- Title of floating windows.
     -- NormalNC       { }, -- normal text in non-current windows
@@ -140,19 +117,19 @@ local theme = lush(function(injected_functions)
     --
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    -- Comment        { }, -- Any comment
+    Comment        { fg = comment }, -- Any comment
 
-    -- Constant       { }, -- (*) Any constant
+    Constant       { fg = red }, -- (*) Any constant
     -- String         { }, --   A string constant: "this is a string"
     -- Character      { }, --   A character constant: 'c', '\n'
-    -- Number         { }, --   A number constant: 234, 0xff
-    -- Boolean        { }, --   A boolean constant: TRUE, false
+    Number         { fg = yellow }, --   A number constant: 234, 0xff
+    Boolean        { fg = pink, gui = "bold" }, --   A boolean constant: TRUE, false
     -- Float          { }, --   A floating point constant: 2.3e10
 
-    -- Identifier     { }, -- (*) Any variable name
+    Identifier     { fg = blue }, -- (*) Any variable name
     -- Function       { }, --   Function name (also: methods for classes)
 
-    -- Statement      { }, -- (*) Any statement
+    Statement      { fg = pink, gui = "bold" }, -- (*) Any statement
     -- Conditional    { }, --   if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --   case, default, etc.
@@ -160,18 +137,18 @@ local theme = lush(function(injected_functions)
     -- Keyword        { }, --   any other keyword
     -- Exception      { }, --   try, catch, throw
 
-    -- PreProc        { }, -- (*) Generic Preprocessor
+    PreProc        { fg = orange }, -- (*) Generic Preprocessor
     -- Include        { }, --   Preprocessor #include
     -- Define         { }, --   Preprocessor #define
     -- Macro          { }, --   Same as Define
     -- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
 
-    -- Type           { }, -- (*) int, long, char, etc.
-    -- StorageClass   { }, --   static, register, volatile, etc.
-    -- Structure      { }, --   struct, union, enum, etc.
+    Type           { fg = sky }, -- (*) int, long, char, etc.
+    StorageClass   { fg = pink, gui = "bold" }, --   static, register, volatile, etc.
+    Structure      { fg = pink, gui = "bold" }, --   struct, union, enum, etc.
     -- Typedef        { }, --   A typedef
 
-    -- Special        { }, -- (*) Any special symbol
+    Special        { fg = green }, -- (*) Any special symbol
     -- SpecialChar    { }, --   Special character in a constant
     -- Tag            { }, --   You can use CTRL-] on this
     -- Delimiter      { }, --   Character that needs attention
