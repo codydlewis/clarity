@@ -139,7 +139,7 @@ local theme = lush(function(injected_functions)
 
     PreProc        { fg = orange }, -- (*) Generic Preprocessor
     Include        { fg = pink, gui = "bold" }, --   Preprocessor #include
-    -- Define         { }, --   Preprocessor #define
+    Define         { fg = pink, gui = "bold" }, --   Preprocessor #define
     -- Macro          { }, --   Same as Define
     -- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
 
