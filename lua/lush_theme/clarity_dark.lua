@@ -127,7 +127,7 @@ local theme = lush(function(injected_functions)
     -- Float          { }, --   A floating point constant: 2.3e10
 
     Identifier     { fg = sky }, -- (*) Any variable name
-    -- Function       { }, --   Function name (also: methods for classes)
+    Function       { fg = hsl("#4FAFCC") }, --   Function name (also: methods for classes)
 
     Statement      { fg = pink, gui = "bold" }, -- (*) Any statement
     -- Conditional    { }, --   if, then, else, endif, switch, etc.
@@ -143,7 +143,7 @@ local theme = lush(function(injected_functions)
     -- Macro          { }, --   Same as Define
     -- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = amethyst }, -- (*) int, long, char, etc.
+    Type           { fg = hsl("#DBBBFF") }, -- (*) int, long, char, etc.
     StorageClass   { fg = pink, gui = "bold" }, --   static, register, volatile, etc.
     Structure      { fg = pink, gui = "bold" }, --   struct, union, enum, etc.
     -- Typedef        { }, --   A typedef
